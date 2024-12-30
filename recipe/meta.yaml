@@ -37,7 +37,8 @@ test:
     - psi4
     - resp
   commands:
-    - pip check
+    # disable `pip check` cuz of https://github.com/conda-forge/qcelemental-feedstock/issues/54
+    # - pip check
     - python -c "import resp, sys; sys.exit(resp.test())"  # [unix]
     - python -c "import resp;assert resp.__version__ == '{{ version }}', f'{resp.__version__=} differs from recipe=\'{{ version }}\''"
 
