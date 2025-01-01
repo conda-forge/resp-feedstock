@@ -39,7 +39,7 @@ tests:
   - requirements:
       run:
         - pytest
-        - python ${{ python_min }}.*
+        # - python ${{ python_min }}.*
     script:
       - if: unix
         then: "python -c \"import resp, sys; sys.exit(resp.test())\""
