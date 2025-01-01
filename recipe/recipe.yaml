@@ -32,13 +32,13 @@ requirements:
 tests:
   - python:
       imports:
-        - psi4
         - resp
       python_version: ${{ python_min }}.*
+      # disable `pip check` cuz of https://github.com/conda-forge/qcelemental-feedstock/issues/54
+      pip_check: false
   - requirements:
       run:
         - pytest
-        - pip
         - python ${{ python_min }}.*
     script:
       - if: unix
