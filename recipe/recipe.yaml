@@ -39,10 +39,13 @@ tests:
   - requirements:
       run:
         - pytest
-        # - python ${{ python_min }}.*
+        - python ${{ python_min }}.*
+        # the tests are not reproducible with psi4 1.9 but works with 1.9.1
+        - psi4 !=1.9
     script:
       - if: unix
-        then: "python -c \"import resp, sys; sys.exit(resp.test())\""
+        then:
+          - python -c "import resp, sys; sys.exit(resp.test())"
       - python -c "import resp;assert resp.__version__ == '${{ version }}', f'{resp.__version__=} differs from recipe=\'${{ version }}\''"
 
 about:
